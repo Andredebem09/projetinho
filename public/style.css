@@ -1,0 +1,31 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: #000000;
+}
+
+body.dark-mode {
+    --bg-color: #333333;
+    --text-color: #ffffff;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+}
+/* Estilo para o tema claro */
+h1 {
+    color: #000; /* Preto para o tema claro */
+}
+
+/* Estilo para o tema escuro */
+body.dark-mode h1 {
+    color: #fff; /* Branco para o tema escuro */
+}
+#toggle-theme {
+    position: fixed;
+    top: 20px; /* Distância do topo */
+    right: 20px; /* Distância da direita */
+    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+}
+
