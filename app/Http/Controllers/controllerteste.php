@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\validadeSupportRequest;
 use Illuminate\Http\Request;
 use App\Models\forum;
 
@@ -15,7 +16,7 @@ class controllerteste extends Controller
     {
         return view('forum_de_duvidas', ['title'=>'Crie sua Duvida'], ['subtitle'=>'Crie sua duvida aqui!']);
     }
-    public function envios(request $request)
+    public function envios(validadeSupportRequest $request)
   {
       $pergunta = new forum();
 
@@ -47,7 +48,7 @@ class controllerteste extends Controller
   
       return view('edição', compact('pergunta'));
   }
-  public function atualizar(Request $request, forum $pergunta, string $id)
+  public function atualizar(validadeSupportRequest $request, forum $pergunta, string $id)
 {
     if (!$pergunta = $pergunta->find($id)) {
         return back()->with('error', 'Suporte não encontrado.');
@@ -62,7 +63,18 @@ class controllerteste extends Controller
     $pergunta->update($request->only(['nome_pessoa', 'duvida', 'detalhe', 'imagem']));
 
     return redirect()->route('index.envios')->with('success', 'pergunta '.$pergunta->id .' com sucesso!');
+
+    
 }
+public function  deletar(int|string $id)
+    {
+        if (!$pergunta = forum::find($id)) {
+            return back()->with('error', 'Suporte não encontrado.');
+        }
+        $pergunta->delete();
+
+        return redirect()->route('index.envios')->with('success', 'pergunta '.$pergunta->id .' deletada com sucesso!');
+    }
 
 
 }

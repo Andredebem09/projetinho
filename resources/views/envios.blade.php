@@ -44,7 +44,22 @@
                         </td>
                         <td>
                             <a href="{{ route('index.edit', $item->id) }}" class="btn btn-outline-info">editar</a>
+
+                            <br>
+
+
+                            <form action="{{ route('index.delete', $item->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-outline-info">Deletar</button>
+                        </form>
+                            
+                
+                        </form>
                         </td>
+
+
+
                     </tr>
                 @endforeach
             </tbody>

@@ -19,3 +19,5 @@ route::get('/edição/{id}', [controllerteste::class, 'editar'])->name('index.ed
 
 Route::put('/atualização/{id}', [Controllerteste::class, 'atualizar'])->name('index.atualizar');
 
+route::delete('/delete/{id}', [controllerteste::class, 'deletar'])->name('index.delete');
+

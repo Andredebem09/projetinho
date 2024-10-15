@@ -13,19 +13,19 @@ body {
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
 }
-/* Estilo para o tema claro */
 h1 {
-    color: #000; /* Preto para o tema claro */
+    color: #000; 
 }
-
-/* Estilo para o tema escuro */
+body.dark-mode title{
+    color: #fff;
+}
 body.dark-mode h1 {
-    color: #fff; /* Branco para o tema escuro */
+    color: #fff; 
 }
 #toggle-theme {
     position: fixed;
-    top: 20px; /* Distância do topo */
-    right: 20px; /* Distância da direita */
-    z-index: 1000; /* Garante que o botão fique acima de outros elementos */
+    top: 20px; 
+    right: 20px; 
+    z-index: 1000; 
 }
 

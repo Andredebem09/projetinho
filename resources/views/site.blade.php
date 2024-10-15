@@ -8,10 +8,10 @@
 
     <h1>link para as paginas</h1>
 
-    <a href="{{route('index.forum')}}" class="btn btn-outline-info">ir para o forum de duvidas</a>
+    <a href="{{route('index.forum')}}" class="btn btn-outline-info">Ir para o forum de duvidas</a>
     <br>
 
-    <a href="{{route('index.envios')}}" class="btn btn-outline-info">consulta do forum</a>
+    <a href="{{route('index.envios')}}" class="btn btn-outline-info">Consulta do forum</a>
 
 </div>
 
