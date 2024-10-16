@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class validadeSupportRequest extends FormRequest
 {
@@ -21,13 +22,26 @@ class validadeSupportRequest extends FormRequest
      */
     public function rules(): array
     {
-       return ([
-        'nome_pessoa' => 'required|min:3|max:50', #colocar exclusividade-->|unique:forums
-        'duvida' => 'required|min:3|max:150',
-        'detalhe' => 'required|min:3|max:1000',
-        'imagem' => 'nullable|image|max:2048'
-    ]);
+        $rules = [
+            'nome_pessoa' => 'required|min:3|max:50',
+            'duvida' => 'required|min:3|max:150',
+            'detalhe' => 'required|min:3|max:1000',
+            'imagem' => 'nullable|image|max:2048'
+        ];
+    
+        if ($this->method() == 'PUT') {
+            $rules['nome_pessoa'] = [
+                'required',
+                'min:3',
+                'max:100',
+                Rule::unique('forums')->ignore($this->id),
+            ];
+        }
+    
+        return $rules;
+    }
+    
     
         
     }
-}
+

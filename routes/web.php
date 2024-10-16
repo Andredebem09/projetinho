@@ -21,3 +21,9 @@ Route::put('/atualização/{id}', [Controllerteste::class, 'atualizar'])->name('
 
 route::delete('/delete/{id}', [controllerteste::class, 'deletar'])->name('index.delete');
 
+Route::post('/forum/{id}/responder', [controllerteste::class, 'salvarResposta'])->name('forum.salvarResposta');
+
+Route::get('/forum/{id}/responder', [controllerteste::class, 'responder'])->name('forum.responder');
+
+
+

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\validadeSupportRequest;
 use Illuminate\Http\Request;
 use App\Models\forum;
+use App\Models\Resposta;
+
 
 class controllerteste extends Controller
 {
@@ -60,13 +62,13 @@ class controllerteste extends Controller
         $pergunta->imagem = str_replace('public/', '', $path);
     }
 
-    $pergunta->update($request->only(['nome_pessoa', 'duvida', 'detalhe', 'imagem']));
+    $pergunta->update($request->only(['nome_pessoa', 'duvida', 'detalhe', 'status', 'imagem']));
 
     return redirect()->route('index.envios')->with('success', 'pergunta '.$pergunta->id .' com sucesso!');
 
     
 }
-public function  deletar(int|string $id)
+public function  deletar( int|string $id)
     {
         if (!$pergunta = forum::find($id)) {
             return back()->with('error', 'Suporte não encontrado.');
@@ -75,6 +77,37 @@ public function  deletar(int|string $id)
 
         return redirect()->route('index.envios')->with('success', 'pergunta '.$pergunta->id .' deletada com sucesso!');
     }
+    public function responder(int $id)
+{
+    $pergunta = forum::find($id);
+
+    if (!$pergunta) {
+        return back()->with('error', 'Pergunta não encontrada.');
+    }
+
+    return view('responder_pergunta', compact('pergunta'));
+}
+
+public function salvarResposta(Request $request, $id)
+{
+    $request->validate([
+        'conteudo' => 'required|min:3|max:1000',
+    ]);
+
+    $pergunta = forum::find($id);
+
+    if (!$pergunta) {
+        return back()->with('error', 'Pergunta não encontrada.');
+    }
+
+    Resposta::create([
+        'forum_id' => $pergunta->id,
+        'conteudo' => $request->conteudo,
+    ]);
+
+    return redirect()->route('index.envios')->with('success', 'Resposta adicionada com sucesso!');
+}
+
 
 
 }

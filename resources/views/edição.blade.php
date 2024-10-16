@@ -19,6 +19,11 @@
             <h1>Edite sua dúvida, {{$pergunta->nome_pessoa}}<br>
                 Pergunta: {{$pergunta->duvida}}</h1>
 
+                        @if($errors->any())
+                    @foreach ($errors->all() as $erro)
+                        <p>{{ $erro }}</p>
+                    @endforeach
+                    @endif
 
             <form action="{{ route('index.atualizar', ['id' => $pergunta->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf  

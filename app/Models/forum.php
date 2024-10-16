@@ -10,5 +10,11 @@ class forum extends Model
     use HasFactory;
 
     protected $table = 'forums';
-    protected $fillable = ['nome_pessoa', 'duvida', 'detalhe', 'imagem'];
+   
+    protected $fillable = ['nome_pessoa', 'duvida', 'detalhe', 'status', 'imagem'];
+
+    public function respostas()
+        {
+            return $this->hasMany(Resposta::class);
+        }
 }
