@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <h1>Nova Dúvida</h1>
+<h1>Nova Dúvida</h1>
     <form action="{{ route('index.postados') }}" method="POST" enctype="multipart/form-data">
         @csrf 
         <p>Coloque a dúvida</p>
@@ -28,7 +28,7 @@
         <button type="submit" class="btn btn-outline-info">Enviar</button>
         <a href="{{ route('index.site') }}" class="btn btn-outline-info">Voltar</a>
     </form>
-
+     
 </div>
 
 @endsection
