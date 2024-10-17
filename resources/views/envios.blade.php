@@ -4,7 +4,6 @@
 
 <div class="corpo">
     <div class="container">
-        <!-- Alertas de Sucesso ou Erro -->
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
@@ -26,8 +25,8 @@
                     <th>Detalhe</th>
                     <th>Imagem</th>
                     <th>Status</th>
-                    <th>Ações</th>
                     <th>Respostas</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,6 +45,12 @@
                         </td>
                         <td style="padding: 10px;">{{ $item->status }}</td>
                         <td style="padding: 10px;">
+                            @foreach($item->respostas as $resposta)
+                                <p>{{ $resposta->conteudo }}</p>
+                            @endforeach
+                            <a href="{{ route('forum.responder', $item->id) }}" class="btn btn-outline-info">Responder</a>
+                        </td>
+                        <td style="padding: 10px;">
                             <a href="{{ route('index.edit', $item->id) }}" class="btn btn-outline-info">Editar</a>
                             <br><br>
                             <form action="{{ route('index.delete', $item->id) }}" method="POST">
@@ -53,12 +58,6 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-outline-info">Deletar</button>
                             </form>
-                        </td>
-                        <td style="padding: 10px;">
-                            @foreach($item->respostas as $resposta)
-                                <p>{{ $resposta->conteudo }}</p>
-                            @endforeach
-                            <a href="{{ route('forum.responder', $item->id) }}" class="btn btn-outline-info">Responder</a>
                         </td>
                     </tr>
                 @endforeach
@@ -69,4 +68,5 @@
 </div>
 
 @endsection
+
 
