@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome_pessoa');
             $table->string('duvida');
-            $table->enum('status', ['não realizada', 'realizada']);
+            $table->boolean('status')->default(0);
             $table->text('detalhe');
             $table->string('imagem')->nullable();
             $table->timestamps();

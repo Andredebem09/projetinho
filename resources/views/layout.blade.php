@@ -14,11 +14,11 @@
 <body class="{{ session('theme', 'light-theme') }}">
     <div class="px-4 py-5 my-5 text-center">
 
-    <h1 class="display-5 fw-bold text-body-emphasis">{{ $title ?? 'Fórum de Duvidas' }}</h1>
+    <h1 class="display-5 fw-bold text-body-emphasis">{{ $title ?? 'Forum de Duvidas' }}</h1>
 
-        <h1>Fórum de Dúvidas</h1>
+        <h1></h1>
         <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">{{$subtitle ?? 'Bem-vindo ao Fórum de duvidas!'}} </p>
+        <p class="lead mb-4">{{$subtitle ?? 'Bem-Vindo ao Forum de Duvidas!'}} </p>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
           </div>

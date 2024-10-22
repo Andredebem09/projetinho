@@ -16,7 +16,7 @@
                 </div>
             @endif
 
-            <h1>Edite sua dúvida, {{$pergunta->nome_pessoa}}<br>
+            <h1>Edite seu envio, {{$pergunta->nome_pessoa}}<br>
                 Pergunta: {{$pergunta->duvida}}</h1>
 
                         @if($errors->any())
@@ -53,7 +53,7 @@
 
                 <br>
                     
-                <button type="submit" class="btn btn- outline-info">Atualizar informações</button>
+                <button type="submit" class="btn btn-outline-info">Atualizar informações</button>
                 <a href="{{ route('index.envios') }}" class="btn btn-outline-info">Voltar</a>
             </form>             
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\controllerteste;
+use App\Services\SupportService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,12 +13,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
-    }
+        $this->app->bind(SupportService::class, function ($app) {
+            return new SupportService(
+                $app->make(AppServiceProvider::class) // Injeta o AppServiceProvider no SupportService
+            );
+        });
+        
 
-    /**
-     * Bootstrap any application services.
-     */
+    }
+    
     public function boot(): void
     {
         //

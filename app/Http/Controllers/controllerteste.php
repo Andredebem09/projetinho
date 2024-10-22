@@ -68,6 +68,8 @@ class controllerteste extends Controller
 
     
 }
+
+                        //função para deletar a tarefa/forum
 public function  deletar( int|string $id)
     {
         if (!$pergunta = forum::find($id)) {
@@ -77,6 +79,8 @@ public function  deletar( int|string $id)
 
         return redirect()->route('index.envios')->with('success', 'pergunta '.$pergunta->id .' deletada com sucesso!');
     }
+
+                        //função que retorna aba de repostas da pergunta selecionada
     public function responder(int $id)
 {
     $pergunta = forum::find($id);
@@ -87,6 +91,7 @@ public function  deletar( int|string $id)
 
     return view('responder_pergunta', compact('pergunta'));
 }
+                            //salvar a resposta                 
 
 public function salvarResposta(Request $request, $id)
 {
@@ -106,8 +111,24 @@ public function salvarResposta(Request $request, $id)
     ]);
 
     return redirect()->route('index.envios')->with('success', 'Resposta adicionada com sucesso!');
+
+                            //função da barra de pesquisa
+}
+public function barra_de_pesquisa(Request $request)
+{
+    $query = $request->input('query');
+    $perguntas = forum::where('duvida', 'like', '%' . $query . '%')
+                      ->orWhere('detalhe', 'like', '%' . $query . '%')
+                      ->get();
+                       
+    return view('resultados_pesquisa', compact('query', 'perguntas'));
 }
 
+                    //aba de tarefas realizadas e pendentes 
 
 
 }
+ 
+
+
+

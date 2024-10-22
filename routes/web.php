@@ -25,5 +25,14 @@ Route::post('/forum/{id}/responder', [controllerteste::class, 'salvarResposta'])
 
 Route::get('/forum/{id}/responder', [controllerteste::class, 'responder'])->name('forum.responder');
 
+route::get('/pesquisa', [controllerteste::class, 'barra_de_pesquisa'])->name('index.pesquisa');
+
+Route::get('/tarefas/pendentes', [controllerteste::class, 'tarefasPendentes'])->name('tarefas.pendentes');
+
+Route::get('/tarefas/realizadas', [controllerteste::class, 'tarefasRealizadas'])->name('tarefas.realizadas');
+
+Route::get('/tarefas/{id}/realizar', [controllerteste::class, 'marcarComoRealizada'])->name('tarefas.marcarRealizada');
+
+
 
 

@@ -4,23 +4,23 @@
 
 <div class="container">
 
-<h1>Nova Dúvida</h1>
+<h1>Nova Atividade</h1>
     <form action="{{ route('index.postados') }}" method="POST" enctype="multipart/form-data">
         @csrf 
-        <p>Coloque a dúvida</p>
+        <p>Insira sua turma</p>
         @if($errors->any())
             @foreach ($errors->all() as $erro)
                 <p>{{ $erro }}</p>
             @endforeach
         @endif
-        <input class="form-control" type="text" placeholder="Nome" name="nome_pessoa">
+        <input class="form-control" type="text" placeholder="insira a turma" name="nome_pessoa">
         <br>
-        <p>Assunto:</p>
-        <textarea class="form-control" name="duvida" cols="30" placeholder="Assunto"></textarea>
+        <p>Diciplina:</p>
+        <textarea class="form-control" name="duvida" cols="30" placeholder="insira a Diciplina"></textarea>
         <br>
-        <p>Descreva:</p>
+        <p>Atividade:</p>
         <textarea class="form-control" name="detalhe"
-        cols="30" placeholder= "Descrição"></textarea>
+        cols="30" placeholder= "Insira a Atividade"></textarea>
 
         <br>
         <input type="file" name="imagem" class="form-control">
