@@ -22,13 +22,15 @@
             </div>
             <a href="{{ route('index.site') }}" class="btn btn-outline-info">Voltar</a>
         @else
-            <form action="{{ route('index.pesquisa') }}" method="GET">
-                <input type="text" name="query" placeholder="Pesquise sua atividade" required class="form-control">
-                <button type="submit" class="btn btn-outline-info">Pesquisar</button>
+            <form action="{{ route('index.pesquisa') }}" method="GET" class="mb-4">
+                <div class="input-group">
+                    <input type="text" name="query" placeholder="Pesquise sua atividade" required class="form-control">
+                    <button type="submit" class="btn btn-outline-info">Pesquisar</button>
+                </div>
             </form>
 
-            <table style="width: 100%; border-collapse: separate; border-spacing: 15px;">
-                <thead>
+            <table class="table table-hover">
+                <thead class="thead-light">
                     <tr>
                         <th>Número da atividade</th>
                         <th>Turma</th>
@@ -43,31 +45,36 @@
                 <tbody>
                     @foreach($pergunta as $item)
                         <tr>
-                            <td style="padding: 10px;">{{ $item->id }}</td>
-                            <td style="padding: 10px;">{{ $item->nome_pessoa }}</td>
-                            <td style="padding: 10px;">{{ $item->duvida }}</td>
-                            <td style="padding: 10px;">{{ $item->detalhe }}</td>
-                            <td style="padding: 10px;">
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->nome_pessoa }}</td>
+                            <td>{{ $item->duvida }}</td>
+                            <td style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ $item->detalhe }}</td>
+                            <td>
                                 @if($item->imagem)
-                                    <img src="{{ asset('storage/' . $item->imagem) }}" alt="Imagem" style="max-width: 100%; height: auto;">
+                                    <img src="{{ asset('storage/' . $item->imagem) }}" alt="Imagem" style="max-width: 80px; height: auto;">
                                 @else
                                     Sem imagem
                                 @endif
                             </td>
-                            <td style="padding: 10px;">{{ $item->status }}</td>
-                            <td style="padding: 10px;">
+                            <td>{{ $item->status }}</td>
+                            <td>
                                 @foreach($item->respostas as $resposta)
                                     <p>{{ $resposta->conteudo }}</p>
                                 @endforeach
-                                <a href="{{ route('forum.responder', $item->id) }}" class="btn btn-outline-info">Responder</a>
+                                <a href="{{ route('forum.responder', $item->id) }}" class="btn btn-outline-info">
+                                    <i class="fas fa-reply"></i> Responder
+                                </a>
                             </td>
-                            <td style="padding: 10px;">
-                                <a href="{{ route('index.edit', $item->id) }}" class="btn btn-outline-info">Editar</a>
-                                <br><br>
-                                <form action="{{ route('index.delete', $item->id) }}" method="POST">
+                            <td>
+                                <a href="{{ route('index.edit', $item->id) }}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <form action="{{ route('index.delete', $item->id) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-outline-danger">Deletar</button>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

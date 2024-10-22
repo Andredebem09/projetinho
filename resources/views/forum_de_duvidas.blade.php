@@ -16,7 +16,9 @@
         <input class="form-control" type="text" placeholder="insira a turma" name="nome_pessoa">
         <br>
         <p>Diciplina:</p>
-        <textarea class="form-control" name="duvida" cols="30" placeholder="insira a Diciplina"></textarea>
+        <input class="form-control" type="text" placeholder="Nome da diciplina" name="duvida">
+        
+        <!--<textarea class="form-control" name="duvida" cols="30" placeholder="insira a //??Diciplina"></textarea>!-->
         <br>
         <p>Atividade:</p>
         <textarea class="form-control" name="detalhe"
